@@ -3,364 +3,342 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OpenEar — Anonymous Listening</title>
+  <title>OpenEar — Calm Private Listening Space</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f7f8fc;
+      color:#1f2937;
+      overflow-x:hidden;
+      line-height:1.6;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #070707;
-      color: white;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
-
-    .bg {
-      position: fixed;
-      inset: 0;
+    /* Soft animated background */
+    .bg{
+      position:fixed;
+      inset:0;
       background:
-        radial-gradient(circle at top left, rgba(88, 101, 242, 0.18), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(0, 255, 200, 0.12), transparent 35%),
-        #070707;
-      z-index: -2;
+        radial-gradient(circle at 20% 20%, rgba(160,180,255,0.25), transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(170,240,220,0.22), transparent 45%),
+        radial-gradient(circle at 50% 100%, rgba(255,255,255,0.9), #f7f8fc);
+      z-index:-2;
+      animation: floatBg 12s ease-in-out infinite alternate;
     }
 
-    .noise {
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 4px 4px;
-      opacity: 0.3;
-      z-index: -1;
+    @keyframes floatBg{
+      0%{transform:scale(1) translateY(0px);}
+      100%{transform:scale(1.05) translateY(-10px);}
     }
 
-    .container {
-      width: 90%;
-      max-width: 1150px;
-      margin: auto;
+    .container{
+      width:92%;
+      max-width:1100px;
+      margin:auto;
     }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 0;
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:25px 0;
     }
 
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+    .logo{
+      font-size:1.4rem;
+      font-weight:700;
+      letter-spacing:-0.5px;
     }
 
-    .logo span {
-      color: #8ea2ff;
+    .logo span{color:#6c8cff;}
+
+    /* HERO */
+    .hero{
+      text-align:center;
+      padding:90px 0 60px;
     }
 
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 90px 0 70px;
-    }
-
-    .badge {
-      padding: 10px 18px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 999px;
-      font-size: 0.9rem;
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(10px);
-      margin-bottom: 28px;
-      color: #cfcfcf;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 0.95;
-      letter-spacing: -3px;
-      max-width: 850px;
-      margin-bottom: 24px;
-    }
-
-    .highlight {
-      background: linear-gradient(90deg, #8ea2ff, #6ef3d6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle {
-      max-width: 720px;
-      font-size: 1.15rem;
-      line-height: 1.8;
-      color: #b8b8b8;
-      margin-bottom: 42px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn {
-      text-decoration: none;
-      padding: 16px 30px;
-      border-radius: 18px;
-      font-weight: 600;
-      transition: 0.25s ease;
-      font-size: 1rem;
-    }
-
-    .primary {
-      background: linear-gradient(135deg, #8ea2ff, #6ef3d6);
-      color: black;
-      box-shadow: 0 10px 35px rgba(110, 243, 214, 0.25);
-    }
-
-    .primary:hover {
-      transform: translateY(-3px) scale(1.02);
-    }
-
-    .secondary {
-      border: 1px solid rgba(255,255,255,0.12);
-      color: white;
-      background: rgba(255,255,255,0.03);
+    .badge{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.75);
+      border:1px solid rgba(108,140,255,0.15);
+      box-shadow:0 8px 20px rgba(0,0,0,0.04);
+      font-size:0.9rem;
+      color:#4b5563;
+      margin-bottom:20px;
       backdrop-filter: blur(10px);
     }
 
-    .secondary:hover {
-      background: rgba(255,255,255,0.08);
+    h1{
+      font-size:clamp(2.5rem,6vw,4.5rem);
+      letter-spacing:-2px;
+      margin-bottom:18px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-      margin-top: 80px;
-      margin-bottom: 100px;
+    .highlight{
+      background:linear-gradient(90deg,#6c8cff,#6ee7d2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
 
-    .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 28px;
-      padding: 34px;
-      backdrop-filter: blur(14px);
-      transition: 0.25s ease;
+    .subtitle{
+      max-width:720px;
+      margin:auto;
+      color:#6b7280;
+      font-size:1.1rem;
+      margin-bottom:35px;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(142, 162, 255, 0.4);
+    /* BUTTONS */
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
     }
 
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
+    .btn{
+      padding:15px 26px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.25s;
     }
 
-    .price {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-      color: #8ea2ff;
+    .primary{
+      background:#6c8cff;
+      color:white;
+      box-shadow:0 10px 25px rgba(108,140,255,0.25);
     }
 
-    .card p {
-      color: #bdbdbd;
-      line-height: 1.7;
+    .primary:hover{
+      transform:translateY(-3px);
     }
 
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 18px;
-      letter-spacing: -1px;
+    .secondary{
+      background:white;
+      border:1px solid rgba(0,0,0,0.06);
+      color:#374151;
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: #a8a8a8;
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.8;
-      margin-bottom: 50px;
+    .secondary:hover{
+      background:#f3f6ff;
+      transform:translateY(-2px);
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      margin-bottom: 100px;
+    /* SECTIONS */
+    .section{
+      padding:70px 0;
     }
 
-    .feature {
-      padding: 28px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
+    .title{
+      text-align:center;
+      font-size:2.2rem;
+      margin-bottom:10px;
     }
 
-    .feature h4 {
-      margin-bottom: 12px;
-      font-size: 1.1rem;
+    .desc{
+      text-align:center;
+      color:#6b7280;
+      max-width:650px;
+      margin:auto;
+      margin-bottom:40px;
     }
 
-    .feature p {
-      color: #bdbdbd;
-      line-height: 1.7;
+    /* PRICING */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
     }
 
-    footer {
-      text-align: center;
-      padding: 60px 20px 40px;
-      color: #7e7e7e;
-      font-size: 0.95rem;
+    .card{
+      background:rgba(255,255,255,0.85);
+      border:1px solid rgba(0,0,0,0.05);
+      border-radius:18px;
+      padding:26px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.04);
+      transition:0.3s;
+      backdrop-filter: blur(10px);
     }
 
-    @media(max-width: 768px) {
-      h1 {
-        letter-spacing: -2px;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-      }
-
-      .btn {
-        width: 100%;
-      }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 15px 35px rgba(0,0,0,0.08);
     }
+
+    .price{
+      font-size:1.9rem;
+      font-weight:700;
+      color:#6c8cff;
+      margin-bottom:10px;
+    }
+
+    /* FEATURES */
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+
+    .feature{
+      background:rgba(255,255,255,0.85);
+      padding:22px;
+      border-radius:16px;
+      border:1px solid rgba(0,0,0,0.05);
+      transition:0.3s;
+    }
+
+    .feature:hover{
+      transform:translateY(-4px);
+    }
+
+    .feature h4{margin-bottom:6px;}
+    .feature p{color:#6b7280;font-size:0.95rem;}
+
+    /* TESTIMONIALS */
+    .testimonials{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+    }
+
+    .quote{
+      background:white;
+      border:1px solid rgba(0,0,0,0.05);
+      padding:20px;
+      border-radius:16px;
+      font-style:italic;
+      color:#4b5563;
+      box-shadow:0 10px 20px rgba(0,0,0,0.03);
+    }
+
+    /* FAQ */
+    .faq{
+      max-width:800px;
+      margin:auto;
+    }
+
+    .faq-item{
+      background:white;
+      margin-bottom:10px;
+      border-radius:12px;
+      padding:16px;
+      border:1px solid rgba(0,0,0,0.05);
+    }
+
+    .faq-item h4{margin-bottom:6px;}
+    .faq-item p{color:#6b7280;font-size:0.95rem;}
+
+    footer{
+      text-align:center;
+      padding:60px 0;
+      color:#9ca3af;
+      font-size:0.9rem;
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="bg"></div>
-  <div class="noise"></div>
+<div class="bg"></div>
 
-  <div class="container">
+<div class="container">
 
-    <nav>
-      <div class="logo">Open<span>Ear</span></div>
-    </nav>
+  <nav>
+    <div class="logo">Open<span>Ear</span></div>
+  </nav>
 
-    <section class="hero">
-      <div class="badge">Anonymous • Private • Judgment-Free</div>
+  <div class="hero">
+    <div class="badge">Private • Calm • Anonymous Listening</div>
 
-      <h1>
-        A safe place to <span class="highlight">talk freely</span>
-      </h1>
+    <h1>
+      A space where you are <span class="highlight">finally heard</span>
+    </h1>
 
-      <p class="subtitle">
-        Sometimes you don’t need advice. You just need someone who truly listens.
-        OpenEar offers calm, respectful and fully private text conversations through Telegram.
-      </p>
+    <p class="subtitle">
+      No judgment. No pressure. Just a calm human listening to your thoughts through private text conversations.
+    </p>
 
-      <div class="buttons">
-        <a href="https://t.me/YOURUSERNAME" target="_blank" class="btn primary">
-          Start on Telegram
-        </a>
-
-        <a href="#pricing" class="btn secondary">
-          View Pricing
-        </a>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <h2 class="section-title">Simple Pricing</h2>
-      <p class="section-subtitle">
-        Private text-based listening sessions designed to give you space to speak openly and safely.
-      </p>
-
-      <div class="cards">
-
-        <div class="card">
-          <h3>Quick Talk</h3>
-          <div class="price">$3</div>
-          <p>
-            15 minutes of private text conversation.
-            Ideal for quick venting or emotional release.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Deep Conversation</h3>
-          <div class="price">$6</div>
-          <p>
-            30 minutes of calm and uninterrupted conversation.
-            The most popular option.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Late Night Session</h3>
-          <div class="price">$10</div>
-          <p>
-            1 hour of focused listening for deeper thoughts, loneliness or overthinking.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <h2 class="section-title">Why OpenEar?</h2>
-      <p class="section-subtitle">
-        A calm digital space created for people who simply want to be heard.
-      </p>
-
-      <div class="features">
-
-        <div class="feature">
-          <h4>Complete Privacy</h4>
-          <p>
-            Anonymous conversations through Telegram with respect and confidentiality.
-          </p>
-        </div>
-
-        <div class="feature">
-          <h4>No Judgment</h4>
-          <p>
-            Speak openly without pressure, shame or criticism.
-          </p>
-        </div>
-
-        <div class="feature">
-          <h4>Text Only</h4>
-          <p>
-            No calls, no camera, no awkwardness. Just words.
-          </p>
-        </div>
-
-        <div class="feature">
-          <h4>Safe Atmosphere</h4>
-          <p>
-            Calm conversations focused on listening, not forcing advice.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <footer>
-      OpenEar © 2026 — Anonymous Listening Service
-    </footer>
-
+    <div class="buttons">
+      <a class="btn primary" href="https://t.me/OpenEar1" target="_blank">Start Now</a>
+      <a class="btn secondary" href="#pricing">View Pricing</a>
+    </div>
   </div>
+
+  <div id="pricing" class="section">
+    <h2 class="title">Simple Pricing</h2>
+    <p class="desc">Pay only for the time you need. No subscriptions.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="price">$3</div>
+        <p>15 minutes quick emotional release</p>
+      </div>
+
+      <div class="card">
+        <div class="price">$6</div>
+        <p>30 minutes deep listening session</p>
+      </div>
+
+      <div class="card">
+        <div class="price">$10</div>
+        <p>1 hour full attention conversation</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="title">Why OpenEar?</h2>
+    <div class="features">
+      <div class="feature"><h4>Private</h4><p>100% confidential conversations</p></div>
+      <div class="feature"><h4>Calm</h4><p>Soft, stress-free communication</p></div>
+      <div class="feature"><h4>Human</h4><p>Real listening, not automated replies</p></div>
+      <div class="feature"><h4>Easy</h4><p>One click to start talking</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="title">What users feel</h2>
+    <div class="testimonials">
+      <div class="quote">“I finally felt heard after a long time.”</div>
+      <div class="quote">“Very calming and safe space.”</div>
+      <div class="quote">“Simple but surprisingly helpful emotionally.”</div>
+    </div>
+  </div>
+
+  <div class="section faq">
+    <h2 class="title">FAQ</h2>
+
+    <div class="faq-item">
+      <h4>Is this therapy?</h4>
+      <p>No. This is a listening space, not medical or psychological treatment.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Is it anonymous?</h4>
+      <p>Yes, all conversations happen privately on Telegram.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>How do I start?</h4>
+      <p>Just click the Telegram button and send a message.</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 OpenEar — Calm Listening Experience
+  </footer>
+
+</div>
 
 </body>
 </html>
