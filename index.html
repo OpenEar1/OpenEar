@@ -1,11 +1,14 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OpenEar — Anonymous Listening</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -14,8 +17,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #f4f7fb;
-      color: #1f2937;
+      background: #070707;
+      color: white;
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
@@ -25,9 +28,9 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(circle at top left, rgba(167, 139, 250, 0.18), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(125, 211, 252, 0.20), transparent 35%),
-        #f4f7fb;
+        radial-gradient(circle at top left, rgba(88, 101, 242, 0.18), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(0, 255, 200, 0.12), transparent 35%),
+        #070707;
       z-index: -2;
     }
 
@@ -60,7 +63,7 @@
     }
 
     .logo span {
-      color: #7c83fd;
+      color: #8ea2ff;
     }
 
     .hero {
@@ -74,14 +77,13 @@
 
     .badge {
       padding: 10px 18px;
-      border: 1px solid rgba(124,131,253,0.12);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 999px;
       font-size: 0.9rem;
-      background: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.04);
       backdrop-filter: blur(10px);
       margin-bottom: 28px;
-      color: #5b6475;
-      box-shadow: 0 8px 20px rgba(124,131,253,0.08);
+      color: #cfcfcf;
     }
 
     h1 {
@@ -93,7 +95,7 @@
     }
 
     .highlight {
-      background: linear-gradient(90deg, #7c83fd, #7dd3fc);
+      background: linear-gradient(90deg, #8ea2ff, #6ef3d6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -102,7 +104,7 @@
       max-width: 720px;
       font-size: 1.15rem;
       line-height: 1.8;
-      color: #5b6475;
+      color: #b8b8b8;
       margin-bottom: 42px;
     }
 
@@ -123,8 +125,8 @@
     }
 
     .primary {
-      background: linear-gradient(135deg, #7c83fd, #7dd3fc);
-      color: white;
+      background: linear-gradient(135deg, #8ea2ff, #6ef3d6);
+      color: black;
       box-shadow: 0 10px 35px rgba(110, 243, 214, 0.25);
     }
 
@@ -133,16 +135,14 @@
     }
 
     .secondary {
-      border: 1px solid rgba(124,131,253,0.12);
-      color: #4b5563;
-      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: white;
+      background: rgba(255,255,255,0.03);
       backdrop-filter: blur(10px);
-      box-shadow: 0 8px 25px rgba(124,131,253,0.06);
     }
 
     .secondary:hover {
-      background: rgba(255,255,255,0.95);
-      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
     }
 
     .cards {
@@ -154,8 +154,8 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(124,131,253,0.12);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 28px;
       padding: 34px;
       backdrop-filter: blur(14px);
@@ -176,11 +176,11 @@
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 18px;
-      color: #7c83fd;
+      color: #8ea2ff;
     }
 
     .card p {
-      color: #667085;
+      color: #bdbdbd;
       line-height: 1.7;
     }
 
@@ -193,7 +193,7 @@
 
     .section-subtitle {
       text-align: center;
-      color: #667085;
+      color: #a8a8a8;
       max-width: 650px;
       margin: auto;
       line-height: 1.8;
@@ -210,7 +210,7 @@
     .feature {
       padding: 28px;
       border-radius: 24px;
-      background: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.07);
     }
 
@@ -220,14 +220,14 @@
     }
 
     .feature p {
-      color: #667085;
+      color: #bdbdbd;
       line-height: 1.7;
     }
 
     footer {
       text-align: center;
       padding: 60px 20px 40px;
-      color: #6b7280;
+      color: #7e7e7e;
       font-size: 0.95rem;
     }
 
@@ -244,114 +244,123 @@
         width: 100%;
       }
     }
-  </style></head>
-<body>  <div class="bg"></div>
-  <div class="noise"></div>  <div class="container"><nav>
-  <div class="logo">Open<span>Ear</span></div>
-</nav>
+  </style>
+</head>
+<body>
 
-<section class="hero">
-  <div class="badge">Anonymous • Private • Judgment-Free</div>
+  <div class="bg"></div>
+  <div class="noise"></div>
 
-  <h1>
-    A safe place to <span class="highlight">talk freely</span>
-  </h1>
+  <div class="container">
 
-  <p class="subtitle">
-    Sometimes you don’t need advice. You just need someone who truly listens.
-    OpenEar offers calm, respectful and fully private text conversations through Telegram.
-  </p>
+    <nav>
+      <div class="logo">Open<span>Ear</span></div>
+    </nav>
 
-  <div class="buttons">
-    <a href="https://t.me/OpenEar1" target="_blank" class="btn primary">
-      Start on Telegram
-    </a>
+    <section class="hero">
+      <div class="badge">Anonymous • Private • Judgment-Free</div>
 
-    <a href="#pricing" class="btn secondary">
-      View Pricing
-    </a>
+      <h1>
+        A safe place to <span class="highlight">talk freely</span>
+      </h1>
+
+      <p class="subtitle">
+        Sometimes you don’t need advice. You just need someone who truly listens.
+        OpenEar offers calm, respectful and fully private text conversations through Telegram.
+      </p>
+
+      <div class="buttons">
+        <a href="https://t.me/YOURUSERNAME" target="_blank" class="btn primary">
+          Start on Telegram
+        </a>
+
+        <a href="#pricing" class="btn secondary">
+          View Pricing
+        </a>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <h2 class="section-title">Simple Pricing</h2>
+      <p class="section-subtitle">
+        Private text-based listening sessions designed to give you space to speak openly and safely.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>Quick Talk</h3>
+          <div class="price">$3</div>
+          <p>
+            15 minutes of private text conversation.
+            Ideal for quick venting or emotional release.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Deep Conversation</h3>
+          <div class="price">$6</div>
+          <p>
+            30 minutes of calm and uninterrupted conversation.
+            The most popular option.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Late Night Session</h3>
+          <div class="price">$10</div>
+          <p>
+            1 hour of focused listening for deeper thoughts, loneliness or overthinking.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Why OpenEar?</h2>
+      <p class="section-subtitle">
+        A calm digital space created for people who simply want to be heard.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <h4>Complete Privacy</h4>
+          <p>
+            Anonymous conversations through Telegram with respect and confidentiality.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h4>No Judgment</h4>
+          <p>
+            Speak openly without pressure, shame or criticism.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h4>Text Only</h4>
+          <p>
+            No calls, no camera, no awkwardness. Just words.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h4>Safe Atmosphere</h4>
+          <p>
+            Calm conversations focused on listening, not forcing advice.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      OpenEar © 2026 — Anonymous Listening Service
+    </footer>
+
   </div>
-</section>
 
-<section id="pricing">
-  <h2 class="section-title">Simple Pricing</h2>
-  <p class="section-subtitle">
-    Private text-based listening sessions designed to give you space to speak openly and safely.
-  </p>
-
-  <div class="cards">
-
-    <div class="card">
-      <h3>Quick Talk</h3>
-      <div class="price">$3</div>
-      <p>
-        15 minutes of private text conversation.
-        Ideal for quick venting or emotional release.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Deep Conversation</h3>
-      <div class="price">$6</div>
-      <p>
-        30 minutes of calm and uninterrupted conversation.
-        The most popular option.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Late Night Session</h3>
-      <div class="price">$10</div>
-      <p>
-        1 hour of focused listening for deeper thoughts, loneliness or overthinking.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <h2 class="section-title">Why OpenEar?</h2>
-  <p class="section-subtitle">
-    A calm digital space created for people who simply want to be heard.
-  </p>
-
-  <div class="features">
-
-    <div class="feature">
-      <h4>Complete Privacy</h4>
-      <p>
-        Anonymous conversations through Telegram with respect and confidentiality.
-      </p>
-    </div>
-
-    <div class="feature">
-      <h4>No Judgment</h4>
-      <p>
-        Speak openly without pressure, shame or criticism.
-      </p>
-    </div>
-
-    <div class="feature">
-      <h4>Text Only</h4>
-      <p>
-        No calls, no camera, no awkwardness. Just words.
-      </p>
-    </div>
-
-    <div class="feature">
-      <h4>Safe Atmosphere</h4>
-      <p>
-        Calm conversations focused on listening, not forcing advice.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  OpenEar © 2026 — Anonymous Listening Service
-</footer>
-
-  </div></body>
+</body>
 </html>
