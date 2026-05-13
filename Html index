@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenEar — Be Heard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Inter;
+background:#f8fafc;
+color:#1f2937;
+line-height:1.6;
+}
+
+/* soft glow background */
+.bg{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 15% 20%, rgba(124,140,255,0.18), transparent 45%),
+radial-gradient(circle at 85% 70%, rgba(110,231,210,0.18), transparent 45%);
+z-index:-1;
+}
+
+/* container */
+.container{
+max-width:1100px;
+margin:auto;
+padding:90px 20px;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:100px 20px 60px;
+}
+
+h1{
+font-size:3.8rem;
+line-height:1.05;
+letter-spacing:-2px;
+margin-bottom:15px;
+}
+
+.highlight{
+background:linear-gradient(90deg,#7c8cff,#6ee7d2);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.sub{
+max-width:620px;
+margin:auto;
+color:#6b7280;
+font-size:1.1rem;
+}
+
+/* CTA buttons */
+.buttons{
+margin-top:25px;
+display:flex;
+gap:12px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 24px;
+border-radius:14px;
+font-weight:600;
+text-decoration:none;
+transition:0.25s;
+}
+
+.primary{
+background:#7c8cff;
+color:white;
+box-shadow:0 10px 25px rgba(124,140,255,0.25);
+}
+
+.secondary{
+background:white;
+border:1px solid #e5e7eb;
+color:#374151;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+/* SECTION */
+.section{
+margin-top:100px;
+text-align:center;
+}
+
+.title{
+font-size:2.2rem;
+margin-bottom:10px;
+letter-spacing:-1px;
+}
+
+.desc{
+color:#6b7280;
+max-width:600px;
+margin:auto;
+margin-bottom:40px;
+}
+
+/* pricing cards */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:22px;
+margin-top:40px;
+}
+
+.card{
+background:white;
+border:1px solid #eef2f7;
+border-radius:18px;
+padding:28px;
+transition:0.3s;
+box-shadow:0 10px 30px rgba(0,0,0,0.04);
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.price{
+font-size:2rem;
+color:#7c8cff;
+font-weight:700;
+margin-bottom:10px;
+}
+
+/* features */
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+margin-top:40px;
+}
+
+.feature{
+background:white;
+border-radius:16px;
+padding:22px;
+border:1px solid #eef2f7;
+}
+
+/* testimonials */
+.testimonials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:18px;
+margin-top:40px;
+}
+
+.quote{
+background:#fff;
+border:1px solid #eef2f7;
+padding:20px;
+border-radius:16px;
+font-style:italic;
+color:#4b5563;
+}
+
+/* CTA BIG */
+.cta{
+margin-top:120px;
+text-align:center;
+padding:70px 20px;
+background:linear-gradient(90deg,#7c8cff,#6ee7d2);
+border-radius:22px;
+color:white;
+}
+
+.cta a{
+display:inline-block;
+margin-top:15px;
+padding:14px 24px;
+background:white;
+color:#111827;
+border-radius:12px;
+text-decoration:none;
+font-weight:600;
+}
+
+/* footer */
+footer{
+text-align:center;
+margin-top:70px;
+color:#9ca3af;
+font-size:0.9rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+<h1>A place where you are <span class="highlight">finally heard</span></h1>
+<p class="sub">Private anonymous listening sessions through Telegram. Calm, respectful, and judgment-free space for your thoughts.</p>
+
+<div class="buttons">
+<a class="btn primary" href="https://t.me/OpenEar1">Start Talking</a>
+<a class="btn secondary" href="#pricing">View Pricing</a>
+</div>
+</div>
+
+<!-- PRICING -->
+<div class="section" id="pricing">
+<h2 class="title">Simple Pricing</h2>
+<p class="desc">No subscriptions. No complexity. Just pay for time.</p>
+
+<div class="grid">
+
+<div class="card">
+<div class="price">$3</div>
+<p>15 minutes emotional release</p>
+</div>
+
+<div class="card">
+<div class="price">$6</div>
+<p>30 minutes deep listening</p>
+</div>
+
+<div class="card">
+<div class="price">$10</div>
+<p>1 hour full attention</p>
+</div>
+
+</div>
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+<h2 class="title">Why OpenEar?</h2>
+
+<div class="features">
+<div class="feature">Private & Confidential</div>
+<div class="feature">No Judgment Space</div>
+<div class="feature">Human Listening</div>
+<div class="feature">Instant Access</div>
+</div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section">
+<h2 class="title">What people feel</h2>
+
+<div class="testimonials">
+<div class="quote">“Finally someone listened without judging me.”</div>
+<div class="quote">“Very calming and safe experience.”</div>
+<div class="quote">“Simple but emotionally powerful.”</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+<h2>Ready to talk?</h2>
+<p>Start your private conversation anytime.</p>
+<a href="https://t.me/OpenEar1">Open Telegram</a>
+</div>
+
+<footer>
+© 2026 OpenEar — All rights reserved
+</footer>
+
+</div>
+
+</body>
+</html>
