@@ -1,342 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OpenEar — Calm Private Listening Space</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenEar — Private Listening Space</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
+<style>
 
-    body{
-      font-family:'Inter',sans-serif;
-      background:#f7f8fc;
-      color:#1f2937;
-      overflow-x:hidden;
-      line-height:1.6;
-    }
+body{
+margin:0;
+font-family:Inter;
+background: linear-gradient(180deg,#f7f9ff,#ffffff);
+color:#1f2937;
+}
 
-    /* Soft animated background */
-    .bg{
-      position:fixed;
-      inset:0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(160,180,255,0.25), transparent 45%),
-        radial-gradient(circle at 80% 70%, rgba(170,240,220,0.22), transparent 45%),
-        radial-gradient(circle at 50% 100%, rgba(255,255,255,0.9), #f7f8fc);
-      z-index:-2;
-      animation: floatBg 12s ease-in-out infinite alternate;
-    }
+/* soft background glow */
+.bg{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, rgba(124,140,255,0.25), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(110,231,210,0.25), transparent 40%);
+z-index:-1;
+}
 
-    @keyframes floatBg{
-      0%{transform:scale(1) translateY(0px);}
-      100%{transform:scale(1.05) translateY(-10px);}
-    }
+.container{
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+}
 
-    .container{
-      width:92%;
-      max-width:1100px;
-      margin:auto;
-    }
+/* HERO */
+.hero{
+text-align:center;
+padding:80px 20px;
+}
 
-    nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:25px 0;
-    }
+h1{
+font-size:3.5rem;
+line-height:1.1;
+margin-bottom:15px;
+}
 
-    .logo{
-      font-size:1.4rem;
-      font-weight:700;
-      letter-spacing:-0.5px;
-    }
+.highlight{
+background:linear-gradient(90deg,#7c8cff,#6ee7d2);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-    .logo span{color:#6c8cff;}
+p{
+color:#6b7280;
+max-width:600px;
+margin:auto;
+font-size:1.1rem;
+}
 
-    /* HERO */
-    .hero{
-      text-align:center;
-      padding:90px 0 60px;
-    }
+/* BUTTONS */
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 26px;
+border-radius:14px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
 
-    .badge{
-      display:inline-block;
-      padding:10px 16px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.75);
-      border:1px solid rgba(108,140,255,0.15);
-      box-shadow:0 8px 20px rgba(0,0,0,0.04);
-      font-size:0.9rem;
-      color:#4b5563;
-      margin-bottom:20px;
-      backdrop-filter: blur(10px);
-    }
+.primary{
+background:#7c8cff;
+color:white;
+box-shadow:0 10px 25px rgba(124,140,255,0.25);
+}
 
-    h1{
-      font-size:clamp(2.5rem,6vw,4.5rem);
-      letter-spacing:-2px;
-      margin-bottom:18px;
-    }
+.secondary{
+border:1px solid #e5e7eb;
+color:#374151;
+margin-left:10px;
+background:white;
+}
 
-    .highlight{
-      background:linear-gradient(90deg,#6c8cff,#6ee7d2);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+.btn:hover{
+transform:translateY(-3px);
+}
 
-    .subtitle{
-      max-width:720px;
-      margin:auto;
-      color:#6b7280;
-      font-size:1.1rem;
-      margin-bottom:35px;
-    }
+/* SECTION TITLE */
+.section-title{
+text-align:center;
+font-size:2rem;
+margin-top:80px;
+}
 
-    /* BUTTONS */
-    .buttons{
-      display:flex;
-      justify-content:center;
-      gap:14px;
-      flex-wrap:wrap;
-    }
+/* CARDS */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:40px;
+}
 
-    .btn{
-      padding:15px 26px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:600;
-      transition:0.25s;
-    }
+.card{
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(20px);
+border:1px solid rgba(0,0,0,0.05);
+padding:25px;
+border-radius:18px;
+transition:0.3s;
+}
 
-    .primary{
-      background:#6c8cff;
-      color:white;
-      box-shadow:0 10px 25px rgba(108,140,255,0.25);
-    }
+.card:hover{
+transform:translateY(-8px);
+}
 
-    .primary:hover{
-      transform:translateY(-3px);
-    }
+.price{
+font-size:1.8rem;
+color:#7c8cff;
+font-weight:700;
+}
 
-    .secondary{
-      background:white;
-      border:1px solid rgba(0,0,0,0.06);
-      color:#374151;
-    }
+/* FEATURES */
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:40px;
+}
 
-    .secondary:hover{
-      background:#f3f6ff;
-      transform:translateY(-2px);
-    }
+.feature{
+padding:20px;
+background:white;
+border-radius:16px;
+border:1px solid #eee;
+}
 
-    /* SECTIONS */
-    .section{
-      padding:70px 0;
-    }
+/* TESTIMONIALS */
+.testimonials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:40px;
+}
 
-    .title{
-      text-align:center;
-      font-size:2.2rem;
-      margin-bottom:10px;
-    }
+.quote{
+background:#fff;
+border:1px solid #eee;
+padding:20px;
+border-radius:16px;
+font-style:italic;
+color:#4b5563;
+}
 
-    .desc{
-      text-align:center;
-      color:#6b7280;
-      max-width:650px;
-      margin:auto;
-      margin-bottom:40px;
-    }
+/* CTA */
+.cta{
+text-align:center;
+margin-top:100px;
+padding:60px;
+background:linear-gradient(90deg,#7c8cff,#6ee7d2);
+border-radius:20px;
+color:white;
+}
 
-    /* PRICING */
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:20px;
-    }
+.cta a{
+background:white;
+color:#111827;
+padding:14px 24px;
+border-radius:12px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+margin-top:15px;
+}
 
-    .card{
-      background:rgba(255,255,255,0.85);
-      border:1px solid rgba(0,0,0,0.05);
-      border-radius:18px;
-      padding:26px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.04);
-      transition:0.3s;
-      backdrop-filter: blur(10px);
-    }
+footer{
+text-align:center;
+margin-top:60px;
+color:#9ca3af;
+font-size:0.9rem;
+}
 
-    .card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 15px 35px rgba(0,0,0,0.08);
-    }
-
-    .price{
-      font-size:1.9rem;
-      font-weight:700;
-      color:#6c8cff;
-      margin-bottom:10px;
-    }
-
-    /* FEATURES */
-    .features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-    }
-
-    .feature{
-      background:rgba(255,255,255,0.85);
-      padding:22px;
-      border-radius:16px;
-      border:1px solid rgba(0,0,0,0.05);
-      transition:0.3s;
-    }
-
-    .feature:hover{
-      transform:translateY(-4px);
-    }
-
-    .feature h4{margin-bottom:6px;}
-    .feature p{color:#6b7280;font-size:0.95rem;}
-
-    /* TESTIMONIALS */
-    .testimonials{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:18px;
-    }
-
-    .quote{
-      background:white;
-      border:1px solid rgba(0,0,0,0.05);
-      padding:20px;
-      border-radius:16px;
-      font-style:italic;
-      color:#4b5563;
-      box-shadow:0 10px 20px rgba(0,0,0,0.03);
-    }
-
-    /* FAQ */
-    .faq{
-      max-width:800px;
-      margin:auto;
-    }
-
-    .faq-item{
-      background:white;
-      margin-bottom:10px;
-      border-radius:12px;
-      padding:16px;
-      border:1px solid rgba(0,0,0,0.05);
-    }
-
-    .faq-item h4{margin-bottom:6px;}
-    .faq-item p{color:#6b7280;font-size:0.95rem;}
-
-    footer{
-      text-align:center;
-      padding:60px 0;
-      color:#9ca3af;
-      font-size:0.9rem;
-    }
-
-  </style>
+</style>
 </head>
+
 <body>
 
 <div class="bg"></div>
 
 <div class="container">
 
-  <nav>
-    <div class="logo">Open<span>Ear</span></div>
-  </nav>
+<!-- HERO -->
+<div class="hero">
+<h1>A safe place to <span class="highlight">be heard</span></h1>
+<p>Private anonymous listening sessions through Telegram. No judgment. Just real human attention.</p>
 
-  <div class="hero">
-    <div class="badge">Private • Calm • Anonymous Listening</div>
+<a class="btn primary" href="https://t.me/OpenEar1">Start Talking</a>
+<a class="btn secondary" href="#pricing">See Pricing</a>
+</div>
 
-    <h1>
-      A space where you are <span class="highlight">finally heard</span>
-    </h1>
+<!-- PRICING -->
+<h2 class="section-title" id="pricing">Pricing</h2>
 
-    <p class="subtitle">
-      No judgment. No pressure. Just a calm human listening to your thoughts through private text conversations.
-    </p>
+<div class="grid">
 
-    <div class="buttons">
-      <a class="btn primary" href="https://t.me/OpenEar1" target="_blank">Start Now</a>
-      <a class="btn secondary" href="#pricing">View Pricing</a>
-    </div>
-  </div>
+<div class="card">
+<div class="price">$3</div>
+<p>15 min emotional release</p>
+</div>
 
-  <div id="pricing" class="section">
-    <h2 class="title">Simple Pricing</h2>
-    <p class="desc">Pay only for the time you need. No subscriptions.</p>
+<div class="card">
+<div class="price">$6</div>
+<p>30 min deep conversation</p>
+</div>
 
-    <div class="cards">
-      <div class="card">
-        <div class="price">$3</div>
-        <p>15 minutes quick emotional release</p>
-      </div>
+<div class="card">
+<div class="price">$10</div>
+<p>1 hour full attention</p>
+</div>
 
-      <div class="card">
-        <div class="price">$6</div>
-        <p>30 minutes deep listening session</p>
-      </div>
+</div>
 
-      <div class="card">
-        <div class="price">$10</div>
-        <p>1 hour full attention conversation</p>
-      </div>
-    </div>
-  </div>
+<!-- FEATURES -->
+<h2 class="section-title">Why OpenEar?</h2>
 
-  <div class="section">
-    <h2 class="title">Why OpenEar?</h2>
-    <div class="features">
-      <div class="feature"><h4>Private</h4><p>100% confidential conversations</p></div>
-      <div class="feature"><h4>Calm</h4><p>Soft, stress-free communication</p></div>
-      <div class="feature"><h4>Human</h4><p>Real listening, not automated replies</p></div>
-      <div class="feature"><h4>Easy</h4><p>One click to start talking</p></div>
-    </div>
-  </div>
+<div class="features">
+<div class="feature">Private & Confidential</div>
+<div class="feature">No Judgment Space</div>
+<div class="feature">Human Listening</div>
+<div class="feature">Instant Access</div>
+</div>
 
-  <div class="section">
-    <h2 class="title">What users feel</h2>
-    <div class="testimonials">
-      <div class="quote">“I finally felt heard after a long time.”</div>
-      <div class="quote">“Very calming and safe space.”</div>
-      <div class="quote">“Simple but surprisingly helpful emotionally.”</div>
-    </div>
-  </div>
+<!-- TESTIMONIALS -->
+<h2 class="section-title">What people feel</h2>
 
-  <div class="section faq">
-    <h2 class="title">FAQ</h2>
+<div class="testimonials">
+<div class="quote">“I felt finally understood.”</div>
+<div class="quote">“Very calming experience.”</div>
+<div class="quote">“Simple but powerful support.”</div>
+</div>
 
-    <div class="faq-item">
-      <h4>Is this therapy?</h4>
-      <p>No. This is a listening space, not medical or psychological treatment.</p>
-    </div>
+<!-- CTA -->
+<div class="cta">
+<h2>Ready to talk?</h2>
+<p>Start a private conversation anytime you need.</p>
+<a href="https://t.me/OpenEar1">Open Telegram</a>
+</div>
 
-    <div class="faq-item">
-      <h4>Is it anonymous?</h4>
-      <p>Yes, all conversations happen privately on Telegram.</p>
-    </div>
-
-    <div class="faq-item">
-      <h4>How do I start?</h4>
-      <p>Just click the Telegram button and send a message.</p>
-    </div>
-  </div>
-
-  <footer>
-    © 2026 OpenEar — Calm Listening Experience
-  </footer>
+<footer>
+© 2026 OpenEar — All rights reserved
+</footer>
 
 </div>
 
